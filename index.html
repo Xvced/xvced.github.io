@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xvced | Профиль</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
 
+        body {
+            background: #0a0a1a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 70% 30%, rgba(91, 119, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(156, 39, 176, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 64, 129, 0.1) 0%, transparent 50%);
+            animation: cosmic-flow 40s linear infinite;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 40%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 60% 90%, rgba(255, 152, 0, 0.1) 0%, transparent 50%);
+            animation: cosmic-flow 50s linear infinite reverse;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .profile-card {
+            background: rgba(18, 18, 36, 0.95);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .header h1 {
+            font-size: 2.4em;
+            color: #7c4dff;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(124, 77, 255, 0.3);
+        }
+
+        .subtitle {
+            color: rgba(124, 77, 255, 0.9);
+            font-size: 1.3em;
+            letter-spacing: 2px;
+            animation: subtitle-glow 3s ease-in-out infinite;
+            text-shadow: 0 0 12px rgba(124, 77, 255, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-block {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #7c4dff;
+            transition: transform 0.3s ease;
+        }
+
+        .info-block:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-title {
+            color: #7c4dff;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-content {
+            color: #ffffff;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .info-content p {
+            margin: 0.5rem 0;
+        }
+
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, #7c4dff, #5e35b1);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: button-shine 3s infinite;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(124, 77, 255, 0.4);
+        }
+
+        @keyframes cosmic-flow {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+
+        @keyframes subtitle-glow {
+            0%, 100% { 
+                opacity: 0.9;
+                text-shadow: 0 0 10px rgba(124, 77, 255, 0.3);
+            }
+            50% { 
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(124, 77, 255, 0.6);
+            }
+        }
+
+        @keyframes button-shine {
+            0% { transform: translateX(-150%) rotate(45deg); }
+            100% { transform: translateX(150%) rotate(45deg); }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem;
+            }
+            
+            .profile-card {
+                padding: 1.8rem;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="header">
+            <h1>xvced</h1>
+            <div class="subtitle">Reverse Engineering</div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-block">
+                <div class="info-title">Основное</div>
+                <div class="info-content">
+                    <p>Age: 17 - 23</p>
+                    <p>Caste: Мирный/Переговорщик</p>
+                    <p>Country: Russian Federation</p>
+                </div>
+            </div>
+
+            <div class="info-block">
+                <div class="info-title">Контакты</div>
+                <div class="info-content">
+                    <p>Telegram: @xvced</p>
+                </div>
+            </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <a href="https://t.me/xvced_bio" class="contact-button" target="_blank">
+            Telegram
+        </a>
+    </div>
+</body>
+</html>
